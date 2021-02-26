@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+   <h1>Contact</h1>
+   <form method="post">
+      <div class="form-group">
+         <label for="exampleInputEmail1">Email</label>
+         <input name="email" type="email" class="form-control {% if errors.email is defined %}is-invalid{% endif %}" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{formData.email}}">
+         {% if errors.email is defined %}
+         <div class="invalid-feedback">
+               {{ messages.email }}
+         </div>
+         {% endif %}
+      </div>
+      <div class="form-group">
+         <label for="exampleInputSubject1">Sujet</label>
+         <input name="subject" type="text" class="form-control {% if errors.subject is defined %}is-invalid{% endif %}" id="exampleInputPassword1" value="{{formData.subject}}">
+         {% if errors.subject is defined %}
+         <div class="invalid-feedback">
+               {{ messages.subject }}
+         </div>
+         {% endif %}
+      </div>
+      <div class="form-group">
+         <label for="exampleFormControlTextarea1">Message</label>
+         {# @todo rajouter le message d'erreur du champ subject #}
+         <textarea name="message" class="form-control {% if errors.message is defined %}is-invalid{% endif %}" id="exampleFormControlTextarea1" rows="3" >{{formData.message}}</textarea>
+         {% if errors.message is defined %}
+         <div class="invalid-feedback">
+               {{ messages.message }}
+         </div>
+         {% endif %}
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+</div>
+{% endblock %}
